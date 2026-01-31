@@ -9,12 +9,17 @@ function App() {
   const [showOffer, setShowOffer] = useState(false);
   const [videoStarted, setVideoStarted] = useState(false);
   const [headlineClicks, setHeadlineClicks] = useState(0);
+  const [currentDate, setCurrentDate] = useState('');
 
   // Configuration: 27 minutes and 50 seconds in seconds
   // 27 * 60 = 1620 + 50 = 1670 seconds
   const DELAY_SECONDS = 1670;
 
   useEffect(() => {
+    // Set current date formatted as DD/MM/YYYY
+    const date = new Date();
+    setCurrentDate(date.toLocaleDateString('pt-BR'));
+
     let timer: number;
 
     // Only start timer if video has started and offer isn't already shown (via admin click)
@@ -50,7 +55,13 @@ function App() {
       <main className="flex-grow w-full max-w-6xl mx-auto flex flex-col items-center">
         {/* Headline Area - Mobile optimized spacing */}
         <div className="bg-white w-full border-b border-gray-200 py-4 px-4 md:py-8 shadow-sm">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+                
+                {/* Urgency Date Banner */}
+                <div className="w-full max-w-lg bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs md:text-sm font-bold py-2 px-4 rounded mb-4 shadow-sm animate-pulse-slow">
+                   ⚠️ Programa Liberado Até Hoje {currentDate} as 23hr59.
+                </div>
+
                 <span className="inline-block bg-red-600 text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded mb-2 uppercase tracking-wider animate-pulse">
                     REPORTAGEM EXCLUSIVA COM ESPECIALISTA EM EMAGRECIMENTO
                 </span>
@@ -89,7 +100,19 @@ function App() {
         {showOffer && (
           <div className="w-full animate-fade-in transition-all duration-700">
             <OfferSection />
+            
             <Comments />
+
+            {/* Repeated Offer Section at the bottom */}
+            <div className="pt-12 pb-8 bg-gradient-to-t from-gray-100 to-white">
+                <div className="max-w-4xl mx-auto text-center mb-8 px-4">
+                    <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
+                        Garanta sua vaga com desconto antes que acabe o tempo!
+                    </h3>
+                    <p className="text-red-600 font-bold mt-2">Últimas unidades do lote promocional</p>
+                </div>
+                <OfferSection />
+            </div>
           </div>
         )}
         
