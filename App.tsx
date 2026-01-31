@@ -57,12 +57,13 @@ function App() {
         <div className="bg-white w-full border-b border-gray-200 py-4 px-4 md:py-8 shadow-sm">
             <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
                 
-                {/* Urgency Date Banner */}
-                <div className="w-full max-w-lg bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs md:text-sm font-bold py-2 px-4 rounded mb-4 shadow-sm animate-pulse-slow">
+                {/* Urgency Date Banner - Static */}
+                <div className="w-full max-w-lg bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs md:text-sm font-bold py-2 px-4 rounded mb-4 shadow-sm">
                    ⚠️ Programa Liberado Até Hoje {currentDate} as 23hr59.
                 </div>
 
-                <span className="inline-block bg-red-600 text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded mb-2 uppercase tracking-wider animate-pulse">
+                {/* Report Badge - Static */}
+                <span className="inline-block bg-red-600 text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded mb-2 uppercase tracking-wider">
                     REPORTAGEM EXCLUSIVA COM ESPECIALISTA EM EMAGRECIMENTO
                 </span>
                 
