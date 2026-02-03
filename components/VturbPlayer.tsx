@@ -12,14 +12,15 @@ export const VturbPlayer: React.FC = () => {
     document.head.appendChild(script);
 
     return () => {
-      // Optional: Cleanup if needed, though usually video scripts stay
+      // Optional: Cleanup if needed
     };
   }, []);
 
   const VturbSmartplayer = 'vturb-smartplayer' as any;
 
   return (
-    <div className="w-full aspect-video shadow-2xl rounded-xl overflow-hidden bg-black relative z-10">
+    // Removed 'aspect-video' so the player dictates the ratio (important for vertical videos)
+    <div className="w-full shadow-2xl rounded-xl overflow-hidden relative z-10 bg-black">
        <VturbSmartplayer 
           id="ab-698245a49f4a0b25f3ac7c31" 
           style={{ display: 'block', margin: '0 auto', width: '100%' }}

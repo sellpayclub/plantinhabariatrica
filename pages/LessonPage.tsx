@@ -12,6 +12,7 @@ interface LessonPageProps {
 export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
   const [showOffer, setShowOffer] = useState(false);
   const [currentDate, setCurrentDate] = useState('');
+  const [headlineClicks, setHeadlineClicks] = useState(0);
 
   // 33 minutes and 12 seconds
   // 33 * 60 = 1980 + 12 = 1992 seconds
@@ -21,13 +22,31 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('pt-BR'));
 
-    console.log(`Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
-    const timer = window.setTimeout(() => {
-      setShowOffer(true);
-    }, DELAY_SECONDS * 1000);
+    let timer: number;
+    
+    // Only start timer if offer isn't already shown (via admin click)
+    if (!showOffer) {
+      console.log(`Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
+      timer = window.setTimeout(() => {
+        setShowOffer(true);
+      }, DELAY_SECONDS * 1000);
+    }
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [showOffer]);
+
+  const handleHeadlineClick = () => {
+    const newCount = headlineClicks + 1;
+    setHeadlineClicks(newCount);
+    
+    if (newCount === 3) {
+      setShowOffer(true);
+      alert("Modo Admin: Oferta liberada!");
+    }
+
+    // Reset counter after 2 seconds
+    setTimeout(() => setHeadlineClicks(0), 2000);
+  };
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#f8f9fa]">
@@ -60,14 +79,22 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
         {/* Headlines & Image */}
         <div className="text-center mb-8 w-full max-w-3xl">
             {version === 1 ? (
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                <h1 
+                    onClick={handleHeadlineClick}
+                    className="text-xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-6 cursor-pointer select-none active:scale-[0.99] transition-transform"
+                    title="Admin: Clique 3 vezes para liberar oferta"
+                >
                     Descubra como preparar a <span className="text-blue-600">Semente Indígena</span> que está tornando Homens "Ex-impotentes". <br/>
                     <span className="text-lg md:text-xl font-medium text-gray-600 block mt-4">
                         Esse composto das sementes, fez o Cacique ter 14 filhas com 6 esposas mesmo após os 60 anos e REPOVOAR a aldeia.
                     </span>
                 </h1>
             ) : (
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                <h1 
+                    onClick={handleHeadlineClick}
+                    className="text-xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-6 cursor-pointer select-none active:scale-[0.99] transition-transform"
+                    title="Admin: Clique 3 vezes para liberar oferta"
+                >
                     A <span className="text-blue-600">Semente Indígena</span> que chamou a atenção de médicos após um Cacique de 64 anos, REPOVOAR sua aldeia com 14 filhas e 6 esposas.
                     <span className="text-lg md:text-xl font-medium text-gray-600 block mt-4">
                         O que foi descoberto sobre esse composto dentro das sementes, está tornando homens Ex-impotentes.
