@@ -19,8 +19,7 @@ export const VturbPlayer: React.FC = () => {
   const VturbSmartplayer = 'vturb-smartplayer' as any;
 
   return (
-    // Removed 'aspect-video' so the player dictates the ratio (important for vertical videos)
-    <div className="w-full shadow-2xl rounded-xl overflow-hidden relative z-10 bg-black">
+    <div className="w-full relative z-10 flex justify-center">
        <VturbSmartplayer 
           id="ab-698245a49f4a0b25f3ac7c31" 
           style={{ display: 'block', margin: '0 auto', width: '100%' }}
