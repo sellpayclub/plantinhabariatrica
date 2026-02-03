@@ -7,29 +7,27 @@ import { Footer } from '../components/Footer';
 
 export function TvPage() {
   const [showOffer, setShowOffer] = useState(false);
-  const [videoStarted, setVideoStarted] = useState(false);
   const [headlineClicks, setHeadlineClicks] = useState(0);
   const [currentDate, setCurrentDate] = useState('');
 
+  // 1670 seconds = 27 minutes and 50 seconds
   const DELAY_SECONDS = 1670;
 
   useEffect(() => {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('pt-BR'));
 
-    let timer: number;
-
-    if (videoStarted && !showOffer) {
-      console.log(`Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
-      timer = window.setTimeout(() => {
-        setShowOffer(true);
-      }, DELAY_SECONDS * 1000);
-    }
+    // Timer starts immediately on page load to ensure the offer appears correctly
+    // independent of when the user clicks play.
+    console.log(`TvPage Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
+    const timer = window.setTimeout(() => {
+      setShowOffer(true);
+    }, DELAY_SECONDS * 1000);
 
     return () => {
-      if (timer) clearTimeout(timer);
+      clearTimeout(timer);
     };
-  }, [videoStarted, showOffer]);
+  }, []); // Run once on mount
 
   const handleHeadlineClick = () => {
     const newCount = headlineClicks + 1;
@@ -74,7 +72,8 @@ export function TvPage() {
         </div>
 
         <div className="w-full px-0 md:px-4 pb-4 md:pb-8 flex flex-col items-center bg-white md:bg-transparent">
-            <VideoPlayer onVideoStart={() => setVideoStarted(true)} />
+            {/* The setVideoStarted prop is kept for compatibility but doesn't control the timer anymore */}
+            <VideoPlayer onVideoStart={() => {}} />
             
             <div className="w-full max-w-4xl mx-auto text-center mt-2 md:mt-4 mb-4">
                 <p className="text-xs md:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">

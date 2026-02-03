@@ -23,18 +23,14 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('pt-BR'));
 
-    let timer: number;
+    console.log(`LessonPage Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
     
-    // Only start timer if offer isn't already shown (via admin click)
-    if (!showOffer) {
-      console.log(`Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
-      timer = window.setTimeout(() => {
-        setShowOffer(true);
-      }, DELAY_SECONDS * 1000);
-    }
+    const timer = window.setTimeout(() => {
+      setShowOffer(true);
+    }, DELAY_SECONDS * 1000);
 
     return () => clearTimeout(timer);
-  }, [showOffer]);
+  }, []); // Run once on mount to ensure timing consistency
 
   const handleHeadlineClick = () => {
     const newCount = headlineClicks + 1;
@@ -63,7 +59,7 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
         </div>
 
         {/* Headlines & Image */}
-        <div className="text-center mb-8 w-full max-w-3xl">
+        <div className="text-center mb-6 w-full max-w-3xl">
             {version === 1 ? (
                 <h1 
                     onClick={handleHeadlineClick}
@@ -88,7 +84,7 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
                 </h1>
             )}
 
-            <div className="relative rounded-xl overflow-hidden shadow-xl border-4 border-white mb-8 mx-auto max-w-2xl group">
+            <div className="relative rounded-xl overflow-hidden shadow-xl border-4 border-white mb-6 mx-auto max-w-2xl group">
                 <img 
                     src="https://ekfkrwueqwpqakpsrsjt.supabase.co/storage/v1/object/public/imagens%20daniel/indio%20com%20filhos.jpg" 
                     alt="Cacique com família" 
@@ -96,6 +92,20 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                     <p className="text-white text-xs md:text-sm font-medium">Registro fotográfico da aldeia</p>
+                </div>
+            </div>
+
+            {/* Creators Image (Added as requested) */}
+            <div className="w-full max-w-2xl mx-auto mb-2 bg-white p-2 rounded-xl shadow-md border border-gray-100">
+                <img 
+                    src="https://ekfkrwueqwpqakpsrsjt.supabase.co/storage/v1/object/public/imagens%20daniel/CRIADORES%20PRODUTO.jpg" 
+                    alt="Dr. Silva, Amanda e Ronaldo" 
+                    className="w-full h-auto rounded-lg"
+                />
+                <div className="text-center mt-2 pb-1">
+                    <p className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest">
+                        Apresentado por: Dr. Silva, Amanda e Ronaldo
+                    </p>
                 </div>
             </div>
         </div>
