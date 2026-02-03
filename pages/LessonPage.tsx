@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, BookOpen } from 'lucide-react';
+import { Shield } from 'lucide-react';
+import { Header } from '../components/Header';
 import { VturbPlayer } from '../components/VturbPlayer';
 import { LessonOffer } from '../components/LessonOffer';
 import { LessonComments } from '../components/LessonComments';
@@ -50,29 +51,14 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#f8f9fa]">
-      {/* Lesson Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-           <div className="flex items-center gap-2">
-             <div className="bg-blue-600 text-white p-1.5 rounded">
-                <BookOpen size={20} />
-             </div>
-             <div>
-                <h1 className="text-sm font-bold text-gray-800 uppercase tracking-wide leading-none">Protocolo Natural</h1>
-                <p className="text-[10px] text-gray-500 font-semibold">Aula Exclusiva com Amanda</p>
-             </div>
-           </div>
-           <div className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest border border-gray-200 px-3 py-1 rounded-full">
-             Acesso Restrito
-           </div>
-        </div>
-      </header>
+      {/* Use shared Header to match branding of Page 1 */}
+      <Header />
 
       <main className="flex-grow w-full max-w-4xl mx-auto flex flex-col items-center pt-6 md:pt-10 px-4">
         
         {/* Date Warning */}
-        <div className="bg-red-50 border border-red-200 text-red-700 text-xs font-bold py-2 px-4 rounded-lg mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+        <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs md:text-sm font-bold py-2 px-4 rounded mb-6 flex items-center justify-center gap-2 w-full max-w-lg shadow-sm">
+            <span className="w-2 h-2 bg-yellow-600 rounded-full animate-pulse"></span>
             Esta aula sairá do ar hoje, {currentDate} às 23:59.
         </div>
 
