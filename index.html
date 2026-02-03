@@ -27,9 +27,6 @@
     fbq('init', '740258375528435');
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=740258375528435&ev=PageView&noscript=1"
-    /></noscript>
     <!-- End Meta Pixel Code -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -53,6 +50,11 @@
     </script>
   </head>
   <body class="bg-slate-50 text-slate-900">
+    <!-- Meta Pixel NoScript (Moved to body to fix parsing error) -->
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=740258375528435&ev=PageView&noscript=1"
+    /></noscript>
+    
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
