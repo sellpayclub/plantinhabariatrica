@@ -17,8 +17,12 @@ export function TvPage() {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('pt-BR'));
 
+    // Trigger Facebook Pixel PageView manually for SPA navigation
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'PageView');
+    }
+
     // Timer starts immediately on page load to ensure the offer appears correctly
-    // independent of when the user clicks play.
     console.log(`TvPage Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
     const timer = window.setTimeout(() => {
       setShowOffer(true);

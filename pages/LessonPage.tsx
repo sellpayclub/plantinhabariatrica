@@ -23,6 +23,11 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('pt-BR'));
 
+    // Trigger Facebook Pixel PageView manually for SPA navigation
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'PageView');
+    }
+
     console.log(`LessonPage Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
     
     const timer = window.setTimeout(() => {
@@ -94,20 +99,6 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
                     <p className="text-white text-xs md:text-sm font-medium">Registro fotográfico da aldeia</p>
                 </div>
             </div>
-
-            {/* Creators Image (Added as requested) */}
-            <div className="w-full max-w-2xl mx-auto mb-2 bg-white p-2 rounded-xl shadow-md border border-gray-100">
-                <img 
-                    src="https://ekfkrwueqwpqakpsrsjt.supabase.co/storage/v1/object/public/imagens%20daniel/CRIADORES%20PRODUTO.jpg" 
-                    alt="Dr. Silva, Amanda e Ronaldo" 
-                    className="w-full h-auto rounded-lg"
-                />
-                <div className="text-center mt-2 pb-1">
-                    <p className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest">
-                        Apresentado por: Dr. Silva, Amanda e Ronaldo
-                    </p>
-                </div>
-            </div>
         </div>
 
         {/* Video Vturb */}
@@ -123,6 +114,21 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
         {showOffer && (
             <div className="w-full animate-fade-in">
                 <LessonOffer />
+
+                {/* Creators Image - Only shows after delay */}
+                <div className="w-full max-w-2xl mx-auto mb-8 bg-white p-2 rounded-xl shadow-md border border-gray-100">
+                    <img 
+                        src="https://ekfkrwueqwpqakpsrsjt.supabase.co/storage/v1/object/public/imagens%20daniel/CRIADORES%20PRODUTO.jpg" 
+                        alt="Dr. Silva, Amanda e Ronaldo" 
+                        className="w-full h-auto rounded-lg"
+                    />
+                    <div className="text-center mt-2 pb-1">
+                        <p className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest">
+                            Apresentado por: Dr. Silva, Amanda e Ronaldo
+                        </p>
+                    </div>
+                </div>
+
                 <LessonComments />
                 <div className="py-8">
                     <h3 className="text-center text-2xl font-bold text-gray-900 mb-6">Aproveite a oportunidade única</h3>
