@@ -79,14 +79,9 @@ export function TvPage() {
             {/* The setVideoStarted prop is kept for compatibility but doesn't control the timer anymore */}
             <VideoPlayer onVideoStart={() => {}} />
             
+            {/* Removed "X people watching" counter for Google Ads compliance */}
             <div className="w-full max-w-4xl mx-auto text-center mt-2 md:mt-4 mb-4">
-                <p className="text-xs md:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                    947 pessoas estão assistindo agora
-                </p>
+                
             </div>
         </div>
 
