@@ -40,7 +40,7 @@ export const VideoPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#f8f9fa]">
-      <Header />
+      <Header theme="male" />
       
       <main className="flex-grow w-full max-w-4xl mx-auto flex flex-col items-center pt-8 px-4 pb-12">
         
@@ -49,8 +49,8 @@ export const VideoPage: React.FC = () => {
            ⚠️ Devido a alta demanda de acessos, garantimos a apresentação somente até: {currentDate}.
         </div>
 
-        {/* Video Player */}
-        <div className="w-full flex justify-center shadow-2xl rounded-xl overflow-hidden bg-black">
+        {/* Video Player - Sem fundo preto */}
+        <div className="w-full flex justify-center">
            <VturbPlayer 
               id="vid-69837361e3e357e5578ca621" 
               style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}
