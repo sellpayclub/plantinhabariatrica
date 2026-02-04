@@ -28,6 +28,15 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
       (window as any).fbq('track', 'PageView');
     }
 
+    // Google Ads Conversion Event
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-17738671073/0eSXCL-S7sEbEOHHuopC',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
+    }
+
     console.log(`LessonPage Timer started. Offer will appear in ${DELAY_SECONDS} seconds.`);
     
     const timer = window.setTimeout(() => {
