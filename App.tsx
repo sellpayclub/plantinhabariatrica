@@ -2,6 +2,9 @@ import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { TvPage } from './pages/TvPage';
 import { LessonPage } from './pages/LessonPage';
+import { TermsPage } from './pages/TermsPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { ContactPage } from './pages/ContactPage';
 
 function App() {
   return (
@@ -13,6 +16,11 @@ function App() {
         {/* Novas Rotas - Aula Secreta / LibidGotas */}
         <Route path="/aula-secreta-01" element={<LessonPage version={1} />} />
         <Route path="/aula-secreta-02" element={<LessonPage version={2} />} />
+
+        {/* Páginas Institucionais (Rodapé) */}
+        <Route path="/termos" element={<TermsPage />} />
+        <Route path="/privacidade" element={<PrivacyPage />} />
+        <Route path="/contato" element={<ContactPage />} />
       </Routes>
     </HashRouter>
   );
