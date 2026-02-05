@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  lang?: 'pt' | 'en';
+}
+
+export const Footer: React.FC<FooterProps> = ({ lang = 'pt' }) => {
+  const isEn = lang === 'en';
+
   return (
     <footer className="bg-gray-900 text-gray-400 py-10 text-sm">
       <div className="max-w-6xl mx-auto px-4">
         
         {/* Referências Científicas */}
         <div className="mb-10 border-b border-gray-800 pb-8">
-            <h5 className="text-gray-500 font-bold mb-4 uppercase text-xs tracking-wider">Referências Científicas e Estudos Relacionados</h5>
+            <h5 className="text-gray-500 font-bold mb-4 uppercase text-xs tracking-wider">
+              {isEn ? "Scientific References and Related Studies" : "Referências Científicas e Estudos Relacionados"}
+            </h5>
             <ol className="text-[10px] leading-relaxed text-gray-600 list-decimal list-inside text-left space-y-1">
                 <li>Burnett, A. L. (2006). The Role of Nitric Oxide in Erectile Dysfunction. The Journal of Clinical Hypertension, 8(12), 899-902.</li>
                 <li>Toda, N., et al. (2005). Nitric Oxide and Penile Erectile Function. Pharmacological Reviews, 57(3), 351-393.</li>
@@ -25,26 +33,31 @@ export const Footer: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           <div>
-            <h4 className="text-white font-bold mb-4">Saúde e Boa Forma na Net</h4>
+            <h4 className="text-white font-bold mb-4">
+              {isEn ? "Health & Fitness Online" : "Saúde e Boa Forma na Net"}
+            </h4>
             <p>
-              Conteúdo informativo sobre saúde, bem-estar e qualidade de vida. 
-              Os resultados podem variar de pessoa para pessoa.
+              {isEn 
+                ? "Informative content about health, wellness, and quality of life. Results may vary from person to person." 
+                : "Conteúdo informativo sobre saúde, bem-estar e qualidade de vida. Os resultados podem variar de pessoa para pessoa."
+              }
             </p>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4">Links Úteis</h4>
+            <h4 className="text-white font-bold mb-4">{isEn ? "Useful Links" : "Links Úteis"}</h4>
             <ul className="space-y-2">
-              <li><Link to="/termos" className="hover:text-white transition">Termos de Uso</Link></li>
-              <li><Link to="/privacidade" className="hover:text-white transition">Políticas de Privacidade</Link></li>
-              <li><Link to="/contato" className="hover:text-white transition">Contato</Link></li>
+              <li><Link to="/termos" className="hover:text-white transition">{isEn ? "Terms of Use" : "Termos de Uso"}</Link></li>
+              <li><Link to="/privacidade" className="hover:text-white transition">{isEn ? "Privacy Policy" : "Políticas de Privacidade"}</Link></li>
+              <li><Link to="/contato" className="hover:text-white transition">{isEn ? "Contact" : "Contato"}</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4">Aviso Legal</h4>
+            <h4 className="text-white font-bold mb-4">{isEn ? "Legal Disclaimer" : "Aviso Legal"}</h4>
             <p className="text-xs">
-              Este site não é afiliado ao Facebook, Google ou a qualquer entidade dessas empresas. 
-              Depois que você sair dessas redes, a responsabilidade não é delas e sim do nosso site.
-              As informações aqui contidas não substituem o aconselhamento médico profissional.
+              {isEn 
+                ? "This site is not affiliated with Facebook, Google, or any entity of these companies. Once you leave these networks, the responsibility is not theirs but ours. The information contained herein does not replace professional medical advice." 
+                : "Este site não é afiliado ao Facebook, Google ou a qualquer entidade dessas empresas. Depois que você sair dessas redes, a responsabilidade não é delas e sim do nosso site. As informações aqui contidas não substituem o aconselhamento médico profissional."
+              }
             </p>
           </div>
         </div>
@@ -58,7 +71,7 @@ export const Footer: React.FC = () => {
                 <p className="pt-2">CONTATO@GPNEGOCIOOSDIGITAIS.COM | (15) 9835-5640</p>
             </div>
             <div className="mt-6 text-xs text-gray-600">
-                &copy; {new Date().getFullYear()} Saúde e Boa Forma na Net. Todos os direitos reservados.
+                &copy; {new Date().getFullYear()} {isEn ? "Health & Fitness Online" : "Saúde e Boa Forma na Net"}. {isEn ? "All rights reserved." : "Todos os direitos reservados."}
             </div>
         </div>
       </div>

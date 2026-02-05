@@ -3,10 +3,12 @@ import { Tv, Menu, PlayCircle, Activity, User } from 'lucide-react';
 
 interface HeaderProps {
   theme?: 'default' | 'male';
+  lang?: 'pt' | 'en';
 }
 
-export const Header: React.FC<HeaderProps> = ({ theme = 'default' }) => {
+export const Header: React.FC<HeaderProps> = ({ theme = 'default', lang = 'pt' }) => {
   const isMale = theme === 'male';
+  const isEn = lang === 'en';
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm safe-top">
@@ -31,20 +33,23 @@ export const Header: React.FC<HeaderProps> = ({ theme = 'default' }) => {
           <div className="flex flex-col justify-center">
             {isMale ? (
                <h1 className="text-base md:text-xl font-black text-gray-900 tracking-tighter leading-none flex items-center gap-1">
-                 SAÚDE <span className="text-blue-700">MASCULINA</span>
+                 {isEn ? "MENS" : "SAÚDE"} <span className="text-blue-700">{isEn ? "HEALTH" : "MASCULINA"}</span>
                </h1>
             ) : (
                <h1 className="text-base md:text-xl font-black text-gray-900 tracking-tighter leading-none flex items-center gap-1">
-                 SAÚDE <span className="text-blue-600 font-light">&</span> BOA FORMA
+                 {isEn ? "HEALTH" : "SAÚDE"} <span className="text-blue-600 font-light">&</span> {isEn ? "FITNESS" : "BOA FORMA"}
                </h1>
             )}
             
             <div className="flex items-center gap-2 mt-1">
               <span className="bg-red-600 text-white text-[9px] md:text-[10px] font-black px-1.5 py-0.5 rounded uppercase tracking-widest shadow-sm">
-                NA NET
+                {isEn ? "ONLINE" : "NA NET"}
               </span>
               <span className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-wide truncate border-l border-gray-300 pl-2 leading-none">
-                {isMale ? "RECEITA MASCULINA COM AMANDA!" : "Com Claudia Macedo"}
+                {isMale 
+                  ? (isEn ? "MENS RECIPE WITH AMANDA!" : "RECEITA MASCULINA COM AMANDA!") 
+                  : (isEn ? "With Claudia Macedo" : "Com Claudia Macedo")
+                }
               </span>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { TvPage } from './pages/TvPage';
 import { LessonPage } from './pages/LessonPage';
 import { VideoPage } from './pages/VideoPage';
+import { VideoPageEn } from './pages/VideoPageEn';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ContactPage } from './pages/ContactPage';
@@ -20,6 +21,9 @@ function App() {
 
         {/* Rota Vídeo Exclusivo (Sem oferta/comentários) */}
         <Route path="/video-exclusivo" element={<VideoPage />} />
+
+        {/* Rota Vídeo Inglês (Novo) */}
+        <Route path="/secret-video-en" element={<VideoPageEn />} />
 
         {/* Páginas Institucionais (Rodapé) */}
         <Route path="/termos" element={<TermsPage />} />
