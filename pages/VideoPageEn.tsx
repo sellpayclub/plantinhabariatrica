@@ -57,9 +57,18 @@ export const VideoPageEn: React.FC = () => {
            ></VturbPlayer>
         </div>
 
-        <p className="mt-6 text-gray-500 text-xs text-center">
+        <p className="mt-6 text-gray-500 text-xs text-center mb-8">
             Make sure your sound is on to hear the presentation.
         </p>
+
+        {/* News Logos */}
+        <div className="w-full max-w-2xl mx-auto flex justify-center">
+            <img 
+              src="https://manhealthy.xyz/assets/img/news-logos.webp" 
+              alt="Featured on news sites" 
+              className="w-full h-auto object-contain opacity-80 grayscale hover:grayscale-0 transition-all duration-500"
+            />
+        </div>
 
       </main>
 
