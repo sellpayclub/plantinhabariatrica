@@ -6,9 +6,6 @@ export const VideoPageEn: React.FC = () => {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
-    // 0. Set Document Title
-    document.title = "Mens Health - Exclusive Video";
-
     // 1. Set Date (English format)
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('en-US'));
@@ -38,7 +35,7 @@ export const VideoPageEn: React.FC = () => {
     };
   }, []);
 
-  // Defined inside the component to ensure stability (matches working pages)
+  // Cast Vturb element to any to avoid TypeScript errors with custom elements
   const VturbPlayer = 'vturb-smartplayer' as any;
 
   return (
@@ -64,7 +61,7 @@ export const VideoPageEn: React.FC = () => {
             Make sure your sound is on to hear the presentation.
         </p>
 
-        {/* News Logos */}
+        {/* News Logos - Requested Image */}
         <div className="w-full max-w-2xl mx-auto flex justify-center">
             <img 
               src="https://manhealthy.xyz/assets/img/news-logos.webp" 
