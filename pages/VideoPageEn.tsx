@@ -10,11 +10,16 @@ export const VideoPageEn: React.FC = () => {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('en-US'));
 
-    // 2. Load Vturb Script dynamically (NEW ID)
-    const script = document.createElement("script");
-    script.src = "https://scripts.converteai.net/ceaefeeb-feef-4b52-8911-9ec9de0d5b6b/players/6984fa919248e6863dea9953/v4/player.js";
-    script.async = true;
-    document.head.appendChild(script);
+    // 2. Load Vturb Script dynamically (ID: 6984fa919248e6863dea9953)
+    // Verifica se já existe para não duplicar
+    const scriptId = "vturb-script-en";
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://scripts.converteai.net/ceaefeeb-feef-4b52-8911-9ec9de0d5b6b/players/6984fa919248e6863dea9953/v4/player.js";
+      script.async = true;
+      document.head.appendChild(script);
+    }
 
     // 3. Track PageView (Facebook)
     if (typeof window !== 'undefined' && (window as any).fbq) {
@@ -31,7 +36,7 @@ export const VideoPageEn: React.FC = () => {
     }
 
     return () => {
-      // Cleanup if necessary
+      // Optional cleanup
     };
   }, []);
 
@@ -49,7 +54,7 @@ export const VideoPageEn: React.FC = () => {
            ⚠️ Due to high demand, we guarantee the presentation only until: {currentDate}.
         </div>
 
-        {/* Video Player (NEW ID) */}
+        {/* Video Player (ID: 6984fa919248e6863dea9953) */}
         <div className="w-full flex justify-center">
            <VturbPlayer 
               id="vid-6984fa919248e6863dea9953" 
@@ -66,6 +71,7 @@ export const VideoPageEn: React.FC = () => {
             <img 
               src="https://manhealthy.xyz/assets/img/news-logos.webp" 
               alt="Featured on news sites" 
+              referrerPolicy="no-referrer"
               className="w-full h-auto object-contain opacity-80 grayscale hover:grayscale-0 transition-all duration-500"
             />
         </div>

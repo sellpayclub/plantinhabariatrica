@@ -22,8 +22,8 @@ function App() {
         {/* Rota Vídeo Exclusivo (Sem oferta/comentários) */}
         <Route path="/video-exclusivo" element={<VideoPage />} />
 
-        {/* Rota Vídeo Inglês (Novo) */}
-        <Route path="/secret-video-en" element={<VideoPageEn />} />
+        {/* Rota Vídeo Inglês (Novo) - Corrigido para /video-exclusivo-en */}
+        <Route path="/video-exclusivo-en" element={<VideoPageEn />} />
 
         {/* Páginas Institucionais (Rodapé) */}
         <Route path="/termos" element={<TermsPage />} />
