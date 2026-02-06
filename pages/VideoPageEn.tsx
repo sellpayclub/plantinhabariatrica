@@ -2,15 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
+// Define VturbPlayer outside the component to avoid strict TS/Lint issues
+const VturbPlayer = 'vturb-smartplayer' as any;
+
 export const VideoPageEn: React.FC = () => {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
+    // 0. Set Document Title
+    document.title = "Mens Health - Exclusive Video";
+
     // 1. Set Date (English format)
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('en-US'));
 
-    // 2. Load Vturb Script dynamically (NEW ID)
+    // 2. Load Vturb Script dynamically (ID: 6984fa919248e6863dea9953)
     const script = document.createElement("script");
     script.src = "https://scripts.converteai.net/ceaefeeb-feef-4b52-8911-9ec9de0d5b6b/players/6984fa919248e6863dea9953/v4/player.js";
     script.async = true;
@@ -31,12 +37,9 @@ export const VideoPageEn: React.FC = () => {
     }
 
     return () => {
-      // Cleanup if necessary
+      // Optional cleanup
     };
   }, []);
-
-  // Cast Vturb element to any to avoid TypeScript errors with custom elements
-  const VturbPlayer = 'vturb-smartplayer' as any;
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#f8f9fa]">
@@ -49,7 +52,7 @@ export const VideoPageEn: React.FC = () => {
            ⚠️ Due to high demand, we guarantee the presentation only until: {currentDate}.
         </div>
 
-        {/* Video Player (NEW ID) */}
+        {/* Video Player (ID: 6984fa919248e6863dea9953) */}
         <div className="w-full flex justify-center">
            <VturbPlayer 
               id="vid-6984fa919248e6863dea9953" 
@@ -66,6 +69,7 @@ export const VideoPageEn: React.FC = () => {
             <img 
               src="https://manhealthy.xyz/assets/img/news-logos.webp" 
               alt="Featured on news sites" 
+              referrerPolicy="no-referrer"
               className="w-full h-auto object-contain opacity-80 grayscale hover:grayscale-0 transition-all duration-500"
             />
         </div>
