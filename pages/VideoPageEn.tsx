@@ -10,7 +10,7 @@ export const VideoPageEn: React.FC = () => {
     const date = new Date();
     setCurrentDate(date.toLocaleDateString('en-US'));
 
-    // 2. Load Vturb Script dynamically (ID: 6984fa919248e6863dea9953)
+    // 2. Load Vturb Script dynamically (NEW ID)
     const script = document.createElement("script");
     script.src = "https://scripts.converteai.net/ceaefeeb-feef-4b52-8911-9ec9de0d5b6b/players/6984fa919248e6863dea9953/v4/player.js";
     script.async = true;
@@ -31,7 +31,7 @@ export const VideoPageEn: React.FC = () => {
     }
 
     return () => {
-      // Optional cleanup
+      // Cleanup if necessary
     };
   }, []);
 
@@ -49,7 +49,7 @@ export const VideoPageEn: React.FC = () => {
            ⚠️ Due to high demand, we guarantee the presentation only until: {currentDate}.
         </div>
 
-        {/* Video Player (ID: 6984fa919248e6863dea9953) */}
+        {/* Video Player (NEW ID) */}
         <div className="w-full flex justify-center">
            <VturbPlayer 
               id="vid-6984fa919248e6863dea9953" 
@@ -61,7 +61,7 @@ export const VideoPageEn: React.FC = () => {
             Make sure your sound is on to hear the presentation.
         </p>
 
-        {/* News Logos - Requested Image */}
+        {/* News Logos */}
         <div className="w-full max-w-2xl mx-auto flex justify-center">
             <img 
               src="https://manhealthy.xyz/assets/img/news-logos.webp" 
