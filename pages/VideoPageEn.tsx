@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
-// Define VturbPlayer outside the component to avoid strict TS/Lint issues
-const VturbPlayer = 'vturb-smartplayer' as any;
-
 export const VideoPageEn: React.FC = () => {
   const [currentDate, setCurrentDate] = useState('');
 
@@ -41,6 +38,9 @@ export const VideoPageEn: React.FC = () => {
     };
   }, []);
 
+  // Defined inside the component to ensure stability (matches working pages)
+  const VturbPlayer = 'vturb-smartplayer' as any;
+
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#f8f9fa]">
       <Header theme="male" lang="en" />
@@ -69,7 +69,6 @@ export const VideoPageEn: React.FC = () => {
             <img 
               src="https://manhealthy.xyz/assets/img/news-logos.webp" 
               alt="Featured on news sites" 
-              referrerPolicy="no-referrer"
               className="w-full h-auto object-contain opacity-80 grayscale hover:grayscale-0 transition-all duration-500"
             />
         </div>
