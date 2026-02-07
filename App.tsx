@@ -4,6 +4,7 @@ import { TvPage } from './pages/TvPage';
 import { LessonPage } from './pages/LessonPage';
 import { VideoPage } from './pages/VideoPage';
 import { VideoPageEn } from './pages/VideoPageEn';
+import { PreSellPage } from './pages/PreSellPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ContactPage } from './pages/ContactPage';
@@ -15,6 +16,9 @@ function App() {
         {/* Rota Original - Página de TV/Emagrecimento */}
         <Route path="/" element={<TvPage />} />
         
+        {/* Pré-Sell (Nova) */}
+        <Route path="/pre-sell" element={<PreSellPage />} />
+
         {/* Novas Rotas - Aula Secreta / LibidGotas */}
         <Route path="/aula-secreta-01" element={<LessonPage version={1} />} />
         <Route path="/aula-secreta-02" element={<LessonPage version={2} />} />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 import { Header } from '../components/Header';
 import { VturbPlayer } from '../components/VturbPlayer';
@@ -14,6 +15,7 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
   const [showOffer, setShowOffer] = useState(false);
   const [currentDate, setCurrentDate] = useState('');
   const [headlineClicks, setHeadlineClicks] = useState(0);
+  const location = useLocation();
 
   // 33 minutes and 12 seconds
   // 33 * 60 = 1980 + 12 = 1992 seconds
@@ -43,8 +45,18 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
       setShowOffer(true);
     }, DELAY_SECONDS * 1000);
 
+    // Auto-scroll logic if hash is present (coming from Pre-Sell)
+    if (location.hash === '#video-player') {
+      setTimeout(() => {
+        const element = document.getElementById('video-player');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 500); // Small delay to ensure render
+    }
+
     return () => clearTimeout(timer);
-  }, []); // Run once on mount to ensure timing consistency
+  }, [location]); 
 
   const handleHeadlineClick = () => {
     const newCount = headlineClicks + 1;
@@ -110,8 +122,8 @@ export const LessonPage: React.FC<LessonPageProps> = ({ version }) => {
             </div>
         </div>
 
-        {/* Video Vturb */}
-        <div className="w-full mb-8">
+        {/* Video Vturb - Added ID for auto-scroll */}
+        <div id="video-player" className="w-full mb-8 scroll-mt-24">
             <VturbPlayer />
             <p className="text-center text-gray-400 text-xs mt-4 flex items-center justify-center gap-1">
                 <Shield size={12} />
