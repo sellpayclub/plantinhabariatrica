@@ -24,7 +24,12 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // Pixel Antigo
     fbq('init', '740258375528435');
+    // Novo Pixel Solicitado
+    fbq('init', '4431052487169166');
+    
     fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
@@ -51,9 +56,10 @@
   </head>
   <body class="bg-slate-50 text-slate-900">
     <!-- Meta Pixel NoScript (Moved to body to fix parsing error) -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=740258375528435&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=740258375528435&ev=PageView&noscript=1" />
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4431052487169166&ev=PageView&noscript=1" />
+    </noscript>
     
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
